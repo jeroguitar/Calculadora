@@ -1,0 +1,104 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "opensans";
+    src: url("/fonts/openSans.ttf");
+}
+
+html {
+    font-size: 100%;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+body {
+    background: azure;
+    font-family: miFuente;
+    font-size: 100%;
+}
+
+.contenedorGeneral {
+    width: 25%;
+    height: 500px;
+    border: 1px solid silver;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: black;
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2),
+                0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contenedorGeneral > * {
+    width: 90%;
+}
+
+.contenedorTitulo {
+    border: none;
+    flex: 0 0 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.contenedorPantalla {
+    flex: 0 0 20%;
+    border: 1px solid silver;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorTeclas {
+    flex: 0 0 60%;
+    border: 1px solid silver;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.pantalla {
+    width: 90%;
+    height: 60%;
+    text-align: right;
+    font-size: 1.9em;
+    font-weight: bold;
+    color: red;
+    background: black;
+    border: none;
+}
+
+.filas {
+    flex: 1;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.btnTecla {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.btnTecla:nth-last-child(1) {
+    background: orange;
+}
