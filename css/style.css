@@ -1,104 +1,190 @@
-
+/* Reset General */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Configuracion Fuente */
 @font-face {
-    font-family: "miFuente";
-    src: url("/fonts/openSans.ttf");
+  font-family: "miFuente";
+  src: url("../fonts/openSans.ttf");
 }
 
+/* Medidas de referencia HTML */
 html {
-    font-size: 100%;
-    width: 100%;
-    height: 100%;
-    color: white;
+  font-size: 100%;
+  width: 100%;
+  height: 100%;
 }
 
+/* Configuracion del Body */
 body {
-    background: azure;
-    font-family: miFuente;
-    font-size: 100%;
+  background: azure;
+  font-family: miFuente, system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 100%;
 }
 
+/* =====================================================================
+   CONTENEDOR GENERAL
+   - Cambio clave: usar max-width y porcentajes flexibles en vez de ancho fijo.
+   ===================================================================== */
 .contenedorGeneral {
-    width: 25%;
-    height: 500px;
-    border: 1px solid silver;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: black;
-    border-radius: 5px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2),
-                0px 0px 5px rgba(0, 0, 0, 0.1);
+  width: 100%; /* ocupa el ancho disponible */
+  max-width: 420px; /* ancho máximo en pantallas grandes */
+  height: auto; /* que crezca en altura según contenido */
+  border: 1px solid silver;
+  margin: 20px auto;
+  padding: 1rem; /* un poco de relleno interno */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* un poco más de separación */
+  justify-content: flex-start;
+  align-items: center;
+  background-color: black;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2), 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
 .contenedorGeneral > * {
-    width: 90%;
+  width: 100%; /* que los hijos usen todo el ancho interno */
 }
 
+/* TÍTULO */
 .contenedorTitulo {
-    border: none;
-    flex: 0 0 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+  border: none;
+  flex: 0 0 auto; /* que no dependa de una altura fija */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white;
 }
 
+/* PANTALLA */
 .contenedorPantalla {
-    flex: 0 0 20%;
-    border: 1px solid silver;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contenedorTeclas {
-    flex: 0 0 60%;
-    border: 1px solid silver;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+  flex: 0 0 auto;
+  min-height: 80px; /* altura mínima coherente */
+  border: 1px solid silver;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
 }
 
 .pantalla {
-    width: 90%;
-    height: 60%;
-    text-align: right;
-    font-size: 1.9em;
-    font-weight: bold;
-    color: red;
-    background: black;
-    border: none;
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  background: black;
+  border: none;
+  outline: none;
+}
+
+/* Oculta el spinner de input numerico
+   (lo dejamos por si en algún momento usas type="number") */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/* TECLAS */
+.contenedorTeclas {
+  flex: 0 0 auto;
+  border: 1px solid silver;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem 0.75rem 0.75rem;
+  gap: 0.5rem;
 }
 
 .filas {
-    flex: 1;
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* mejor distribución */
+  align-items: center;
+  gap: 0.5rem;
 }
 
+/* Cambio importante:
+   - usar tamaños en función del ancho disponible (flex-basis)
+   - mantener proporción "casi" cuadrada con aspect-ratio
+*/
 .btnTecla {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    font-size: 1.5em;
-    font-weight: bold;
+  flex: 1 1 0;
+  aspect-ratio: 1 / 1; /* mantiene forma circular al cambiar ancho */
+  border-radius: 50%;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  background: #f5f5f5;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .btnTecla:nth-last-child(1) {
-    background: orange;
+  background: orange;
+}
+
+/* Pequeño efecto al pulsar */
+.btnTecla:active {
+  transform: scale(0.96);
+}
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 900px) {
+  .contenedorGeneral {
+    max-width: 360px;
+    margin: 16px auto;
+  }
+
+  .pantalla {
+    font-size: 1.6rem;
+  }
+
+  .btnTecla {
+    font-size: 1.3rem;
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .contenedorGeneral {
+    max-width: 320px;
+    margin: 12px auto;
+    padding: 0.75rem;
+  }
+
+  .contenedorTitulo {
+    font-size: 1.2rem;
+  }
+
+  .contenedorPantalla {
+    min-height: 70px;
+  }
+
+  .pantalla {
+    font-size: 1.4rem;
+  }
+
+  .btnTecla {
+    font-size: 1.2rem;
+  }
 }
